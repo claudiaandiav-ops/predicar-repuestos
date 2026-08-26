@@ -31,6 +31,102 @@ async function cargarProducto() {
     console.log("Producto:", data);
     
     document.title = `${data.descripcion} | ${data.marca} | Predicar Repuestos`;
+    // ==========================
+// SEO DINÁMICO
+// ==========================
+
+const tituloSEO =
+    `${data.descripcion} | ${data.marca} | Predicar Repuestos`;
+
+const descripcionSEO =
+    `Compra ${data.descripcion}, código ${data.codigo}, para ${data.marca} ${data.modelo}. Consulta precio y disponibilidad en Predicar Repuestos, Perú.`;
+
+// Título de la pestaña
+document.title = tituloSEO;
+
+// Meta descripción
+document
+    .getElementById("meta-description")
+    .setAttribute("content", descripcionSEO);
+
+// URL actual del producto
+const urlProducto = window.location.href;
+
+// Canonical
+document
+    .getElementById("canonical")
+    .setAttribute("href", urlProducto);
+
+// Open Graph título
+document
+    .getElementById("og-title")
+    .setAttribute("content", tituloSEO);
+
+// Open Graph descripción
+document
+    .getElementById("og-description")
+    .setAttribute("content", descripcionSEO);
+
+// Open Graph URL
+document
+    .getElementById("og-url")
+    .setAttribute("content", urlProducto);
+
+// Imagen del producto
+const imagenProducto = data.imagen
+    ? data.imagen
+    : "https://claudiaandiav-ops.github.io/predicar-repuestos/img/sinfoto.png";
+
+// Open Graph imagen
+document
+    .getElementById("og-image")
+    .setAttribute("content", imagenProducto);
+
+
+// ==========================
+// SCHEMA.ORG PRODUCT
+// ==========================
+
+const productoSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+
+    "name": data.descripcion,
+
+    "description": descripcionSEO,
+
+    "sku": data.codigo,
+
+    "brand": {
+        "@type": "Brand",
+        "name": data.marca || "Sin marca"
+    },
+
+    "image": imagenProducto,
+
+    "offers": {
+        "@type": "Offer",
+
+        "url": urlProducto,
+
+        "priceCurrency": "PEN",
+
+        "price": Number(data.precio || 0).toFixed(2),
+
+        "availability":
+            Number(data.stock) > 0
+                ? "https://schema.org/InStock"
+                : "https://schema.org/OutOfStock",
+
+        "itemCondition":
+            "https://schema.org/NewCondition"
+    }
+};
+
+document
+    .getElementById("producto-schema")
+    .textContent =
+    JSON.stringify(productoSchema);
 
 
     // =========================
