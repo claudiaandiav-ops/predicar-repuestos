@@ -29,6 +29,7 @@ async function cargarProducto() {
     }
 
     console.log("Producto:", data);
+    
     document.title = `${data.descripcion} | ${data.marca} | Predicar Repuestos`;
 
 
