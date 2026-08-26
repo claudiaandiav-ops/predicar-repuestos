@@ -157,7 +157,9 @@ document
 
     document.getElementById("modelo").textContent =
         data.modelo || "";
+const textoSEO = `Encuentra ${data.descripcion || "este repuesto automotriz"}, código ${data.codigo || "disponible por consulta"}, para vehículos ${data.marca || ""} ${data.modelo || ""}. Consulta precio y disponibilidad en Predicar Repuestos, especialistas en repuestos automotrices en Perú.`;
 
+document.getElementById("texto-seo").textContent = textoSEO;
 
     // =========================
     // FOTO
