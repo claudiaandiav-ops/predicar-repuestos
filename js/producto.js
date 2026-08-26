@@ -91,15 +91,23 @@ const productoSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
 
-    "name": data.descripcion,
+    "name": data.descripcion || "Repuesto automotriz",
 
     "description": descripcionSEO,
 
-    "sku": data.codigo,
+    "sku": data.codigo ? String(data.codigo) : "",
+
+    "mpn": data.codigo ? String(data.codigo) : "",
+
+    "category": data.categoria
+        ? String(data.categoria)
+        : "Repuestos automotrices",
+
+    "url": urlProducto,
 
     "brand": {
         "@type": "Brand",
-        "name": data.marca || "Sin marca"
+        "name": data.marca || "Predicar Repuestos"
     },
 
     "image": imagenProducto,
@@ -119,7 +127,12 @@ const productoSchema = {
                 : "https://schema.org/OutOfStock",
 
         "itemCondition":
-            "https://schema.org/NewCondition"
+            "https://schema.org/NewCondition",
+
+        "seller": {
+            "@type": "Organization",
+            "name": "Predicar Repuestos"
+        }
     }
 };
 
