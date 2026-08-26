@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-PE">
 
 <head>
 
@@ -7,13 +7,85 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Predicar Repuestos</title>
+    <!-- SEO PRINCIPAL -->
+    <title>Predicar Repuestos | Repuestos Automotrices en Perú</title>
 
+    <meta name="description"
+        content="Encuentra repuestos automotrices en Perú. Busca productos por código, descripción, categoría, marca o modelo en Predicar Repuestos.">
+
+    <meta name="robots" content="index, follow">
+
+    <meta name="author" content="Predicar Repuestos">
+
+    <!-- URL CANÓNICA -->
+    <link rel="canonical"
+        href="https://claudiaandiav-ops.github.io/predicar-repuestos/">
+
+    <!-- OPEN GRAPH - WHATSAPP / FACEBOOK -->
+    <meta property="og:type" content="website">
+
+    <meta property="og:url"
+        content="https://claudiaandiav-ops.github.io/predicar-repuestos/">
+
+    <meta property="og:title"
+        content="Predicar Repuestos | Repuestos Automotrices en Perú">
+
+    <meta property="og:description"
+        content="Encuentra y busca repuestos automotrices por código, descripción, categoría, marca o modelo.">
+
+    <meta property="og:image"
+        content="https://claudiaandiav-ops.github.io/predicar-repuestos/img/logo.png">
+
+    <meta property="og:locale" content="es_PE">
+
+    <!-- TWITTER / X -->
+    <meta name="twitter:card" content="summary">
+
+    <meta name="twitter:title"
+        content="Predicar Repuestos | Repuestos Automotrices en Perú">
+
+    <meta name="twitter:description"
+        content="Busca repuestos automotrices por código, descripción, categoría, marca o modelo.">
+
+    <meta name="twitter:image"
+        content="https://claudiaandiav-ops.github.io/predicar-repuestos/img/logo.png">
+
+    <!-- ESTILOS -->
     <link rel="stylesheet" href="css/style.css">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- DATOS ESTRUCTURADOS PARA GOOGLE -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AutoPartsStore",
+        "name": "Predicar Repuestos",
+        "description": "Especialistas en repuestos automotrices para Perú.",
+        "url": "https://claudiaandiav-ops.github.io/predicar-repuestos/",
+        "logo": "https://claudiaandiav-ops.github.io/predicar-repuestos/img/logo.png",
+        "image": "https://claudiaandiav-ops.github.io/predicar-repuestos/img/logo.png",
+        "areaServed": {
+            "@type": "Country",
+            "name": "Perú"
+        }
+    }
+    </script>
+
+    <!-- DATOS DEL SITIO WEB PARA BUSCADORES -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Predicar Repuestos",
+        "url": "https://claudiaandiav-ops.github.io/predicar-repuestos/",
+        "inLanguage": "es-PE"
+    }
+    </script>
 
 </head>
+
 
 <body>
 
@@ -21,13 +93,19 @@
 
     <div class="logo-area">
 
-        <img src="img/logo.png" class="logo" alt="Predicar">
+        <img
+            src="img/logo.png"
+            class="logo"
+            alt="Logo de Predicar Repuestos"
+        >
 
         <div class="logo-texto">
 
             <h1>PREDICAR REPUESTOS</h1>
 
-            <p>Especialistas en repuestos automotrices para Perú</p>
+            <p>
+                Especialistas en repuestos automotrices para Perú
+            </p>
 
         </div>
 
@@ -41,48 +119,121 @@
 
 </header>
 
-<section class="buscador">
+
+<section class="buscador" aria-labelledby="titulo-buscador">
+
+    <h2 id="titulo-buscador" class="visually-hidden">
+        Buscar repuestos automotrices
+    </h2>
 
     <div class="filtros">
 
-        <select id="categoria">
+        <select id="categoria" aria-label="Seleccionar categoría">
 
-            <option value="">Todas las categorías</option>
+            <option value="">
+                Todas las categorías
+            </option>
 
         </select>
-        <select id="marca">
-    <option value="">Todas las marcas</option>
-</select>
+
+
+        <select id="marca" aria-label="Seleccionar marca">
+
+            <option value="">
+                Todas las marcas
+            </option>
+
+        </select>
+
 
         <div class="search-box">
 
             <input
                 id="buscador"
-                type="text"
+                type="search"
                 placeholder="Buscar por código, descripción, marca o modelo..."
+                aria-label="Buscar repuestos"
+                autocomplete="off"
             >
 
-            <button>
+            <button type="button" aria-label="Buscar">
 
                 🔍
 
             </button>
-<div id="sugerencias"></div>
+
+            <div id="sugerencias"></div>
+
         </div>
-        
 
     </div>
 
 </section>
 
+
 <main>
 
-    <div id="productos">
+    <!-- CONTENIDO SEO -->
+    <section class="contenido-seo">
 
-    </div>
+        <h2>Repuestos automotrices en Perú</h2>
+
+        <p>
+            En <strong>Predicar Repuestos</strong> puedes consultar y buscar
+            repuestos automotrices de forma rápida y sencilla. Utiliza nuestro
+            buscador para encontrar productos por código, descripción,
+            categoría, marca o modelo.
+        </p>
+
+        <p>
+            Nuestro catálogo permite localizar información sobre diferentes
+            repuestos y autopartes disponibles, facilitando la búsqueda del
+            producto que necesitas para tu vehículo.
+        </p>
+
+        <h2>Busca repuestos por código, marca o modelo</h2>
+
+        <p>
+            Puedes utilizar los filtros para encontrar repuestos automotrices
+            según su categoría o marca. También puedes realizar una búsqueda
+            utilizando el código o la descripción del producto.
+        </p>
+
+    </section>
+
+
+    <!-- PRODUCTOS -->
+    <section aria-labelledby="titulo-productos">
+
+        <h2 id="titulo-productos" class="visually-hidden">
+            Catálogo de productos y repuestos automotrices
+        </h2>
+
+        <div id="productos">
+
+        </div>
+
+    </section>
+
+
+    <!-- INFORMACIÓN ADICIONAL -->
+    <section class="contenido-seo">
+
+        <h2>Catálogo de repuestos automotrices</h2>
+
+        <p>
+            Consulta nuestro catálogo de productos y encuentra información
+            sobre los repuestos disponibles. Predicar Repuestos está orientado
+            a facilitar la búsqueda de autopartes mediante un sistema de
+            consulta por categorías, marcas y descripciones.
+        </p>
+
+    </section>
 
 </main>
 
+
+<!-- SUPABASE -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script src="js/supabase.js"></script>
