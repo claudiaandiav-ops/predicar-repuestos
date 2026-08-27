@@ -45,7 +45,7 @@
             const { data, error } =
                 await supabaseClient
                     .from("productos")
-                    .select("id")
+                    .select("id, descripcion")
                     .order("id")
                     .range(0, 9999);
 
@@ -80,14 +80,27 @@
 
             data.forEach(producto => {
 
-                xml += `
+    const slug = String(producto.descripcion || "")
+        .trim()
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/(^-|-$)/g, "");
+
+    const urlProducto =
+    slug
+        ? `${BASE_URL}/producto.html?id=${producto.id}&amp;producto=${slug}`
+        : `${BASE_URL}/producto.html?id=${producto.id}`;
+
+    xml += `
     <url>
-        <loc>${BASE_URL}/producto.html?id=${producto.id}</loc>
+        <loc>${urlProducto}</loc>
         <priority>0.8</priority>
     </url>
 `;
 
-            });
+});
 
 
             xml += `
