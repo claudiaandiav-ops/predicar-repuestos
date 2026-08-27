@@ -264,8 +264,6 @@ Muchas gracias.`;
     actualizarSEO(data);
 
 }
-
-
 function actualizarSEO(data) {
 
     const nombre =
@@ -279,38 +277,26 @@ function actualizarSEO(data) {
 
     const precio =
         Number(data.precio ?? 0);
-
-
     // TÍTULO DE GOOGLE
 
     const titulo =
         `${nombre}${marca ? " " + marca : ""} | Predicar Repuestos`;
-
-
     document.title = titulo;
-
-
     // META DESCRIPCIÓN
-
     const descripcionSEO =
         `Compra o consulta ${nombre}` +
         `${marca ? " marca " + marca : ""}` +
         `${codigo ? ", código " + codigo : ""}` +
         `. Repuestos automotrices en Perú. Consulta precio y disponibilidad en Predicar Repuestos.`;
-
-
     const metaDescription =
         document.querySelector(
             'meta[name="description"]'
         );
-
     if (metaDescription) {
-
         metaDescription.setAttribute(
             "content",
             descripcionSEO
         );
-
     }
 
 
@@ -446,9 +432,7 @@ function actualizarSEO(data) {
         }
 
     };
-
-
-    let schemaScript =
+        let schemaScript =
         document.getElementById("producto-schema");
 
 

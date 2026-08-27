@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Generador de Sitemap</title>
+</head>
+
+<body>
+
+    <h1>Generador de Sitemap</h1>
+
+    <button id="generar">
+        Generar sitemap.xml
+    </button>
+
+    <p id="estado"></p>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="js/supabase.js"></script>
+
+
+    <script>
+
+        const BASE_URL =
+            "https://claudiaandiav-ops.github.io/predicar-repuestos";
+
+
+        document
+            .getElementById("generar")
+            .addEventListener("click", generarSitemap);
+
+
+        async function generarSitemap() {
+
+            const estado =
+                document.getElementById("estado");
+
+            estado.textContent =
+                "Cargando productos...";
+
+
+            const { data, error } =
+                await supabaseClient
+                    .from("productos")
+                    .select("id")
+                    .order("id")
+                    .range(0, 9999);
+
+
+            if (error) {
+
+                console.error(error);
+
+                estado.textContent =
+                    "Error al obtener productos.";
+
+                return;
+
+            }
+
+
+            estado.textContent =
+                `Productos encontrados: ${data.length}`;
+
+
+            let xml =
+`<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <url>
+        <loc>${BASE_URL}/</loc>
+        <priority>1.0</priority>
+    </url>
+`;
+
+
+            data.forEach(producto => {
+
+                xml += `
+    <url>
+        <loc>${BASE_URL}/producto.html?id=${producto.id}</loc>
+        <priority>0.8</priority>
+    </url>
+`;
+
+            });
+
+
+            xml += `
+</urlset>`;
+
+
+            const blob =
+                new Blob(
+                    [xml],
+                    {
+                        type:
+                            "application/xml"
+                    }
+                );
+
+
+            const url =
+                URL.createObjectURL(blob);
+
+
+            const enlace =
+                document.createElement("a");
+
+            enlace.href = url;
+
+            enlace.download =
+                "sitemap.xml";
+
+            enlace.click();
+
+
+            URL.revokeObjectURL(url);
+
+
+            estado.textContent =
+                `¡Listo! Se generó el sitemap con ${data.length} productos.`;
+
+        }
+
+    </script>
+
+</body>
+
+</html>

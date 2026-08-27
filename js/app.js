@@ -47,20 +47,20 @@ function mostrarProductos(productos) {
         const tarjeta = document.createElement("div");
 
         tarjeta.className = "card";
-const slug = producto.descripcion
+const descripcion = String(producto.descripcion || producto.codigo || "");
+
+const slug = descripcion
     .toLowerCase()
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
     tarjeta.innerHTML = `
-
 <div class="imagen-producto">
     <img src="img/sinfoto.png" alt="Sin Foto">
 </div>
 
 <div class="contenido-card">
-
     <h2>${producto.descripcion}</h2>
 
     <hr>
