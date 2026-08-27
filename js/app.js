@@ -47,8 +47,13 @@ function mostrarProductos(productos) {
         const tarjeta = document.createElement("div");
 
         tarjeta.className = "card";
-
-        tarjeta.innerHTML = `
+const slug = producto.descripcion
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+    tarjeta.innerHTML = `
 
 <div class="imagen-producto">
     <img src="img/sinfoto.png" alt="Sin Foto">
@@ -56,34 +61,34 @@ function mostrarProductos(productos) {
 
 <div class="contenido-card">
 
-<h2>${producto.descripcion}</h2>
+    <h2>${producto.descripcion}</h2>
 
-<hr>
+    <hr>
 
-<p>🏷️ <strong>Código:</strong> ${producto.codigo}</p>
+    <p>🏷️ <strong>Código:</strong> ${producto.codigo}</p>
 
-<p>🚗 <strong>Marca:</strong> ${producto.marca}</p>
+    <p>🚗 <strong>Marca:</strong> ${producto.marca}</p>
 
-<p>🚘 <strong>Modelo:</strong> ${producto.modelo}</p>
+    <p>🚘 <strong>Modelo:</strong> ${producto.modelo}</p>
 
-<div class="stock">
-    Disponible
+    <div class="stock">
+        Disponible
+    </div>
+
+    <div class="precio">
+        S/ ${Number(producto.precio ?? 0).toLocaleString("es-PE", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        })}
+    </div>
+
+    <a href="producto.html?id=${producto.id}&producto=${slug}" class="btn-producto">
+        Ver producto
+    </a>
+
 </div>
 
-<div class="precio">
-S/ ${Number(producto.precio ?? 0).toLocaleString("es-PE", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2
-})}
-</div>
-
-<a href="producto.html?id=${producto.id}" class="btn-producto">
-Ver producto
-</a>
-
-</div>
-
-`;
+`;    
 
         contenedor.appendChild(tarjeta);
 
