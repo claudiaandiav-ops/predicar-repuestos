@@ -402,6 +402,9 @@ function actualizarSEO(data) {
         "name": nombre,
 
         "description": descripcionSEO,
+         "image":
+        data.imagen ||
+        "https://claudiaandiav-ops.github.io/predicar-repuestos/img/sinfoto.png",
 
         "sku": codigo,
 
